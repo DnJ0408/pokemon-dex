@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const DashBoard = ({ selectedPokemons }) => {
+const DashBoard = ({ selectedPokemons, deletePokemon }) => {
 
     return (
         <div>
@@ -13,7 +13,7 @@ const DashBoard = ({ selectedPokemons }) => {
                                 <img src={pokemon.img_url} alt={pokemon.korean_name} width="50px" />
                                 <p>{pokemon.korean_name}</p>
                                 <p>No. 00{pokemon.id}</p>
-                                <button>삭제</button>
+                                <button onClick={() => deletePokemon(pokemon.id)}>삭제</button>
                             </div>
                         );
                     })}

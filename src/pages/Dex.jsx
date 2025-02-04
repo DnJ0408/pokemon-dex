@@ -6,6 +6,13 @@ const Dex = () => {
 
     const [selectedPokemons, setSelectedPokemons] = useState([]);
 
+    const deletePokemon = (id) => {
+        const deletedPokemon = selectedPokemons.filter((pokemon) => {
+            return pokemon.id !== id;
+        })
+        setSelectedPokemons(deletedPokemon);
+    }
+
     const addPokemon = (pokemon) => {
         if (selectedPokemons.length < 6) {
             setSelectedPokemons((prev) => {
@@ -18,7 +25,10 @@ const Dex = () => {
     };
     return (
         <div>
-            <DashBoard selectedPokemons={selectedPokemons} />
+            <DashBoard
+                selectedPokemons={selectedPokemons}
+                deletePokemon={deletePokemon}
+            />
             <PokemonList addPokemon={addPokemon} />
         </div>
     )
