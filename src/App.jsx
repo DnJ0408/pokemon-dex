@@ -1,6 +1,7 @@
 import './App.css'
 import Router from './shared/Router'
 import { ToastContainer, Bounce } from 'react-toastify'
+import GlobalStyle from './styles/GlobalStyle'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         theme="light"
         transition={Bounce}
       />
+      <GlobalStyle />
     </>
   )
 }
