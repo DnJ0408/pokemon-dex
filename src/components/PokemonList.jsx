@@ -8,7 +8,7 @@ const PokemonList = ({ addPokemon }) => {
     const navigate = useNavigate();
 
     const handleCardClick = (pokemon) => {
-        navigate(`/details?id=${pokemon.id}&name=${pokemon.korean_name}&img=${pokemon.img_url}`);
+        navigate(`/details?img=${pokemon.img_url}&name=${pokemon.korean_name}&types=${pokemon.types}&description=${pokemon.description}`);
         console.log(pokemon);
     }
     return (
