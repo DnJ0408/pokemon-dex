@@ -1,22 +1,31 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-const PokemonCard = ({ pokemon, addPokemon, handleCardClick }) => {
+const PokemonCard = ({ pokemon, clickButton, buttonText }) => {
+
+    const navigate = useNavigate();
+
+    const handleCardClick = (pokemon) => {
+        navigate(`/details?img=${pokemon.img_url}&name=${pokemon.korean_name}&types=${pokemon.types}&description=${pokemon.description}`);
+    }
+
     return (
-        <PokemonCardList
+        <StPokemonCard
             onClick={() => { handleCardClick(pokemon) }}>
             <img src={pokemon.img_url} alt={pokemon.korean_name} />
             <h3>{pokemon.korean_name}</h3>
             <p>No.{pokemon.id.toString().padStart(3, '0')}</p>
-            <AddButton onClick={(e) => {
+            <StButton onClick={(e) => {
                 e.stopPropagation();
-                addPokemon(pokemon);
-            }}>ADD
-            </AddButton>
-        </PokemonCardList>
+                clickButton(pokemon);
+            }}>
+                {buttonText}
+            </StButton>
+        </StPokemonCard>
     )
 }
 
-const PokemonCardList = styled.li`
+const StPokemonCard = styled.li`
     background: white;
     padding: 16px;
     width: 200px; 
@@ -42,11 +51,11 @@ const PokemonCardList = styled.li`
     }
 `;
 
-const AddButton = styled.button`
-    background: red;
+const StButton = styled.button`
+    background: #ebbe6b;
     color: white;
     border: none;
-    padding: 8px 12px;
+    padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
@@ -54,8 +63,8 @@ const AddButton = styled.button`
     transition: all 0.3s;
 
     &:hover {
-        background: #ac0101;
+        background: #e9a62a;
     }
 `;
 
-export default PokemonCard
+export default PokemonCard;
