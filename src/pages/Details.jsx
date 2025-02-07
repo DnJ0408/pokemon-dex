@@ -4,10 +4,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Details = () => {
+
+    //*--- Page이동 함수 ---*//
     const navigate = useNavigate();
+
+    //*--- query strings로 전달한 데이터를 가져오는 함수  ---*//
     const location = useLocation();
     const params = new URLSearchParams(location.search);
 
+    //*--- params에 담긴 데이터(query strings)를 img, name, types, description에 할당 ---*//
     const img = params.get("img");
     const name = params.get("name");
     const types = params.get("types");
@@ -30,6 +35,7 @@ const Details = () => {
     );
 };
 
+//*--- Styled-Components ---*//
 const StPageContainer = styled.div`
     min-height: 100vh;
     display: flex;

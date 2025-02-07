@@ -12,7 +12,7 @@ const Home = () => {
     )
 }
 
-
+//*--- Styled-Components ---*//
 const StContainer = styled.div`
     display: flex;
     flex-direction: column;
