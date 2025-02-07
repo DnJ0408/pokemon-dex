@@ -1,7 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
+import { useLocation, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Details = () => {
+    const navigate = useNavigate();
     const location = useLocation();
     const params = new URLSearchParams(location.search);
 
@@ -11,27 +14,30 @@ const Details = () => {
     const description = params.get("description");
 
     return (
-        <PageContainer>
-            <Card>
-                <Image src={img} alt={name} />
-                <Content>
-                    <Name>{name}</Name>
-                    <Types>{types}</Types>
-                    <Description>{description}</Description>
-                </Content>
-            </Card>
-        </PageContainer>
+        <StPageContainer>
+            <StCard>
+                <StBackButton onClick={() => navigate("/dex")}>
+                    <FontAwesomeIcon icon={faAnglesLeft} />
+                </StBackButton>
+                <StImage src={img} alt={name} />
+                <StContent>
+                    <StName>{name}</StName>
+                    <StTypes>{types}</StTypes>
+                    <StDescription>{description}</StDescription>
+                </StContent>
+            </StCard>
+        </StPageContainer>
     );
 };
 
-const PageContainer = styled.div`
+const StPageContainer = styled.div`
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-const Card = styled.div`
+const StCard = styled.div`
     width: 400px;
     background: #fff;
     border-radius: 16px;
@@ -45,7 +51,22 @@ const Card = styled.div`
     align-items: center;
 `;
 
-const Image = styled.img`
+const StBackButton = styled.button`
+    align-self: flex-start;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    padding: 5px;
+    margin-bottom: 10px;
+    color: #ebbe6b;
+
+    &:hover {
+        color: #e9a62a;
+    }
+`;
+
+const StImage = styled.img`
     width: 200px;
     height: 200px;
     object-fit: cover;
@@ -53,28 +74,28 @@ const Image = styled.img`
     margin-bottom: 10px;
 `;
 
-const Content = styled.div`
+const StContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
 `;
 
-const Name = styled.h2`
+const StName = styled.h2`
     font-size: 28px;
     font-weight: bold;
     color: #333;
 `;
 
-const Types = styled.p`
-    background: #ffcc00;
+const StTypes = styled.p`
+    background: #dabf56;
     color: #fff;
     padding: 4px 10px;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: bold;
 `;
 
-const Description = styled.p`
+const StDescription = styled.p`
     font-size: 16px;
     color: #666;
     padding: 12px;
