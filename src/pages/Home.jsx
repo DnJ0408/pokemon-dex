@@ -5,15 +5,15 @@ import styled from "styled-components";
 const Home = () => {
 
     return (
-        <Container>
-            <TitleImage src={TitleImageSrc} alt="Pokémon Logo" />
-            <LinkToDex to="/dex">Create Your Pokédex</LinkToDex>
-        </Container>
+        <StContainer>
+            <StTitleImage src={TitleImageSrc} alt="Pokémon Logo" />
+            <StLinkToDex to="/dex">Create Your Pokédex</StLinkToDex>
+        </StContainer>
     )
 }
 
 
-const Container = styled.div`
+const StContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,13 +21,13 @@ const Container = styled.div`
     height: 100vh;
 `
 
-const TitleImage = styled.img`
+const StTitleImage = styled.img`
     width: 600px;
     max-width: 80%;
     margin-bottom: 40px;
 `;
 
-const LinkToDex = styled(Link)`
+const StLinkToDex = styled(Link)`
     color: white;
     text-decoration-line: none;
     border: 1px solid red;
