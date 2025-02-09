@@ -1,7 +1,10 @@
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import { useContext } from "react";
+import { PokemonContext } from "../context/PokemonContext";
+import MOCK_DATA from "../components/data/MOCK_DATA";
 
 const Details = () => {
 
@@ -12,11 +15,20 @@ const Details = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
 
-    //*--- params에 담긴 데이터(query strings)를 img, name, types, description에 할당 ---*//
+    //*--- params에 담긴 데이터(query strings)를 id, img, name, types, description에 할당 ---*//
+    const id = params.get("id");
     const img = params.get("img");
     const name = params.get("name");
     const types = params.get("types");
     const description = params.get("description");
+
+    const { addPokemon } = useContext(PokemonContext);
+
+    const handleAddPokemon = () => {
+        const pokemon = MOCK_DATA.find((p) => p.id === Number(id));
+        console.log(pokemon);
+        addPokemon(pokemon);
+    }
 
     return (
         <StPageContainer>
@@ -29,6 +41,12 @@ const Details = () => {
                     <StName>{name}</StName>
                     <StTypes>{types}</StTypes>
                     <StDescription>{description}</StDescription>
+                    <StAddButton onClick={(e) => {
+                        e.stopPropagation();
+                        handleAddPokemon();
+                    }}>
+                        Add
+                    </StAddButton>
                 </StContent>
             </StCard>
         </StPageContainer>
@@ -106,6 +124,22 @@ const StDescription = styled.p`
     color: #666;
     padding: 12px;
     line-height: 1.5;
+`;
+
+const StAddButton = styled.button`
+    background: #ebbe6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 8px;
+    transition: all 0.3s;
+
+    &:hover {
+        background: #e9a62a;
+    }
 `;
 
 export default Details;
