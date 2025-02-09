@@ -6,7 +6,7 @@ const PokemonCard = ({ pokemon, clickButton, buttonText }) => {
     const navigate = useNavigate();
 
     const handleCardClick = (pokemon) => {
-        navigate(`/details?img=${pokemon.img_url}&name=${pokemon.korean_name}&types=${pokemon.types}&description=${pokemon.description}`);
+        navigate(`/details?id=${pokemon.id}&img=${pokemon.img_url}&name=${pokemon.korean_name}&types=${pokemon.types}&description=${pokemon.description}`);
     }
 
     return (
