@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import MOCK_DATA from "./data/MOCK_DATA"
 import PokemonCard from "./PokemonCard";
+import { useContext } from "react";
+import { PokemonContext } from "../context/PokemonContext";
 
-const PokemonList = ({ addPokemon }) => {
+const PokemonList = () => {
 
+    const { addPokemon } = useContext(PokemonContext);
 
     return (
         <StPokemonUl>
