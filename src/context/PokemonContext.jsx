@@ -16,9 +16,7 @@ export const PokemonContextProvider = ({ children }) => {
     }
 
     if (selectedPokemon.length < 6) {
-      setSelectedPokemon((prev) => {
-        return [...prev, pokemon];
-      });
+      setSelectedPokemon((prev) => [...prev, pokemon]);
       toast.success(`${pokemon.korean_name}이(가) 추가 되었어요!`);
     } else {
       toast.warning("최대 6마리까지만 함께 할 수 있어요!");
@@ -27,19 +25,13 @@ export const PokemonContextProvider = ({ children }) => {
 
   //*--- 포켓몬 삭제 함수 ---*//
   const deletePokemon = (id) => {
-    const deletedPokemon = selectedPokemon.filter((pokemon) => {
-      return pokemon.id !== id;
-    })
+    const deletedPokemon = selectedPokemon.filter((pokemon) => pokemon.id !== id)
     toast.success("포켓몬이 자연으로 돌아갔습니다.")
     setSelectedPokemon(deletedPokemon);
   }
 
   return (
-    <PokemonContext.Provider value={{
-      selectedPokemon: selectedPokemon,
-      addPokemon: addPokemon,
-      deletePokemon: deletePokemon,
-    }}>
+    <PokemonContext.Provider value={{ selectedPokemon, addPokemon, deletePokemon }}>
       {children}
     </PokemonContext.Provider>
   );
