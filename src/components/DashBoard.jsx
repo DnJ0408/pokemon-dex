@@ -1,7 +1,11 @@
 import styled from "styled-components"
 import PokemonCard from "./PokemonCard";
+import { useContext } from "react";
+import { PokemonContext } from "../context/PokemonContext";
 
-const DashBoard = ({ selectedPokemon, deletePokemon }) => {
+const DashBoard = () => {
+
+    const { deletePokemon, selectedPokemon } = useContext(PokemonContext);
 
     return (
         <StDashBoardWrapper>
@@ -12,7 +16,7 @@ const DashBoard = ({ selectedPokemon, deletePokemon }) => {
                         key={pokemon.id}
                         pokemon={pokemon}
                         buttonText="Delete"
-                        clickButton={(data) => { deletePokemon(data.id) }}
+                        clickButton={() => deletePokemon(pokemon.id)}
                     />
                 )}
             </StSelectedPokemonCards>
