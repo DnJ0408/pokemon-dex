@@ -2,11 +2,13 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { PokemonContext } from "../context/PokemonContext";
 import MOCK_DATA from "../components/data/MOCK_DATA";
+import { useDispatch } from "react-redux";
+import { addPokemon } from "../redux/slices/pokemonSlice";
 
 const Details = () => {
+
+    const dispatch = useDispatch();
 
     //*--- Page이동 함수 ---*//
     const navigate = useNavigate();
@@ -22,12 +24,11 @@ const Details = () => {
     const types = params.get("types");
     const description = params.get("description");
 
-    const { addPokemon } = useContext(PokemonContext);
-
+    //*--- 디테일 page에 보여줄 포켓몬 고르는 함수 ---*//
     const handleAddPokemon = () => {
         const pokemon = MOCK_DATA.find((p) => p.id === Number(id));
         console.log(pokemon);
-        addPokemon(pokemon);
+        dispatch(addPokemon(pokemon));
     }
 
     return (

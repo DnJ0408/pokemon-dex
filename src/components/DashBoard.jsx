@@ -1,11 +1,13 @@
 import styled from "styled-components"
 import PokemonCard from "./PokemonCard";
-import { useContext } from "react";
-import { PokemonContext } from "../context/PokemonContext";
+import { useDispatch, useSelector } from "react-redux";
+import { deletePokemon } from "../redux/slices/pokemonSlice";
+
 
 const DashBoard = () => {
 
-    const { deletePokemon, selectedPokemon } = useContext(PokemonContext);
+    const dispatch = useDispatch();
+    const selectedPokemon = useSelector((state) => state.pokemon.selectedPokemon);
 
     return (
         <StDashBoardWrapper>
@@ -16,7 +18,7 @@ const DashBoard = () => {
                         key={pokemon.id}
                         pokemon={pokemon}
                         buttonText="Delete"
-                        clickButton={() => deletePokemon(pokemon.id)}
+                        clickButton={(data) => dispatch(deletePokemon(data.id))}
                     />
                 )}
             </StSelectedPokemonCards>

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import MOCK_DATA from "./data/MOCK_DATA"
 import PokemonCard from "./PokemonCard";
-import { useContext } from "react";
-import { PokemonContext } from "../context/PokemonContext";
+import { useDispatch } from "react-redux";
+import { addPokemon } from "../redux/slices/pokemonSlice";
 
 const PokemonList = () => {
 
-    const { addPokemon } = useContext(PokemonContext);
+    const dispatch = useDispatch();
 
     return (
         <StPokemonUl>
@@ -15,7 +15,7 @@ const PokemonList = () => {
                     key={pokemon.id}
                     pokemon={pokemon}
                     buttonText="ADD"
-                    clickButton={addPokemon}
+                    clickButton={(data) => dispatch(addPokemon(data))}
                 />
             )}
         </StPokemonUl>
