@@ -14,7 +14,7 @@ CRUD 기능으로 포켓몬 카드를 도감에 추가, 삭제할 수 있습니�
 <br>
 
 ## ⚙ 주요 기능
-- **포켓몬 추가**: 각 포켓몬 카드에 Add 버튼을 눌러 도감에 추가할 수 있습니다.
+- **포켓몬 추가**: 포켓몬 카드에 Add 버튼을 눌러 도감에 추가할 수 있습니다.
 - **포켓몬 삭제**: 내 도감에서 포켓몬을 삭제할 수 있습니다.
 - **포켓몬 자세히보기**: 리스트에 있는 카드를 클릭해 포켓몬의 자세한 정보를 열람할 수 있습니다.
 
@@ -28,5 +28,4 @@ CRUD 기능으로 포켓몬 카드를 도감에 추가, 삭제할 수 있습니�
 <br>
 
 ## 💻 기술 스택
-<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/JavaScript.png?raw=true" width="80">
-<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/React.png?raw=true" width="80">
+<img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/JavaScript.png?raw=true" width="80"> <img src="https://github.com/yewon-Noh/readme-template/blob/main/skills/React.png?raw=true" width="80">
