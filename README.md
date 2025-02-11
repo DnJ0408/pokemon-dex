@@ -3,6 +3,11 @@
 
 <br>
 
+## 📦 배포 주소
+![https://pokemon-dex-youngjin-project.vercel.app/]
+
+<br>
+
 ## 📅 프로젝트 기간
 > 2025.02.03 - 2025.02.11
 
