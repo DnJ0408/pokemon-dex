@@ -13,6 +13,16 @@
 
 <br>
 
+## 📜페이지 소개
+- Home
+![pokedex home](https://github.com/user-attachments/assets/72775ec8-e74d-4de4-bdbe-d170fd4c0f7e)
+- Dex
+![pokemon dex](https://github.com/user-attachments/assets/784b67de-5591-4369-b417-c499f87e1e82)
+- Details
+![pokemon details](https://github.com/user-attachments/assets/c39e677a-d4fa-4d54-883f-f64309de1717)
+
+
+
 ## ⚙ 주요 기능
 - **포켓몬 추가**: 포켓몬 카드에 Add 버튼을 눌러 도감에 추가할 수 있습니다.
 - **포켓몬 삭제**: 내 도감에서 포켓몬을 삭제할 수 있습니다.
