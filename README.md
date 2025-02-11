@@ -1,4 +1,5 @@
 # 📕 Pokédex(포켓몬 도감)
+![pokedex home](https://github.com/user-attachments/assets/530b4106-0de7-47fd-bc1c-4afbdaa2eb66)
 
 <br>
 
