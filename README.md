@@ -13,22 +13,22 @@
 
 <br>
 
-## 📜페이지 소개
-### Home
+## 📜페이지
+## Home
 <br>
 
 ![pokedex home](https://github.com/user-attachments/assets/72775ec8-e74d-4de4-bdbe-d170fd4c0f7e)
 
 <br>
 
-### Dex
+## Dex
 <br>
 
 ![pokemon dex](https://github.com/user-attachments/assets/784b67de-5591-4369-b417-c499f87e1e82)
 
 <br>
 
-### Details
+## Details
 <br>
 
 ![pokemon details](https://github.com/user-attachments/assets/98689ad7-0bbf-479b-8af8-845c8e001e25)
