@@ -1,6 +1,6 @@
 # 📕 Pokédex(포켓몬 도감)
 ![pokemonLogo](https://github.com/user-attachments/assets/78cfb905-3c11-42bf-96f4-1f2c612bfa9c)
-
+<img src="https://github.com/user-attachments/assets/78cfb905-3c11-42bf-96f4-1f2c612bfa9c" width="300px" />
 <br>
 
 ## 📅 프로젝트 기간
