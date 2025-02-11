@@ -23,7 +23,7 @@ CRUD 기능으로 포켓몬 카드를 도감에 추가, 삭제할 수 있습니�
 ## 😀 기술 블로그
 ![](https://debnjin.tistory.com/88)
 ![](https://debnjin.tistory.com/90)
-![](https://debnjin.tistory.com/91)
+![React에서 중복되는 컴포넌트 리팩토링과 함수 전달 방식의 차이점](https://debnjin.tistory.com/91)
 
 <br>
 
