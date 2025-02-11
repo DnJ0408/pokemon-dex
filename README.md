@@ -14,18 +14,20 @@
 <br>
 
 ## 📜페이지 소개
-###Home
+### Home
 <br>
 ![pokedex home](https://github.com/user-attachments/assets/72775ec8-e74d-4de4-bdbe-d170fd4c0f7e)
-###Dex
+<br>
+
+### Dex
 <br>
 ![pokemon dex](https://github.com/user-attachments/assets/784b67de-5591-4369-b417-c499f87e1e82)
-###Details
+<br>
+
+### Details
 <br>
 ![pokemon details](https://github.com/user-attachments/assets/98689ad7-0bbf-479b-8af8-845c8e001e25)
-
-
-
+<br>
 
 ## ⚙ 주요 기능
 - **포켓몬 추가**: 포켓몬 카드에 Add 버튼을 눌러 도감에 추가할 수 있습니다.
