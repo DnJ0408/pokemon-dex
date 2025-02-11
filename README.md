@@ -23,7 +23,9 @@
 
 ## 😀 기술 블로그
 [React에서 중복되는 컴포넌트 리팩토링과 함수 전달 방식의 차이점](https://debnjin.tistory.com/88)
+<br>
 [이벤트 버블링부터 쿼리 스트링까지, 포켓몬 리스트에서 겪은 문제 3가지](https://debnjin.tistory.com/90)
+<br>
 [React에서 중복되는 컴포넌트 리팩토링과 함수 전달 방식의 차이점](https://debnjin.tistory.com/91)
 
 <br>
