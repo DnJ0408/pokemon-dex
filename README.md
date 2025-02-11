@@ -9,8 +9,7 @@
 <br>
 
 ## 📝프로젝트 소개
-> 마음에 드는 포켓몬을 추가/삭제 하는 React 기반의 웹 애플리케이션입니다.
-> Redux toolkit으로 상태관리를 하며 React-Router-DOM으로 Page 이동이 가능합니다.
+> 마음에 드는 포켓몬을 추가/삭제 하는 React 기반의 웹 애플리케이션입니다. <br> Redux toolkit으로 상태관리를 하며 React-Router-DOM으로 Page 이동이 가능합니다.
 
 <br>
 
