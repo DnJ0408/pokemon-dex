@@ -1,0 +1,126 @@
+// 03-02-2025
+1. 리액트 페이지를 3개 만들었다. Home, Dex, Details
+그리고 Home화면에 이미지 파일을 올리려고 했는데 구현이 안됨
+  
+  solution: img파일의 이름이 logo가 아니라 logo.svg였고 확장자는 png파일 이었다.
+
+2. Link 태그에 Styled-components 적용하고 싶었으나
+Link는 react-router-dom에서 가져온 컴포넌트여서
+평소에 쓰던 styled.div`` 방식으로는 적용 시킬수가 없었다.
+  
+  solution: styled.div(Link)`` 로 쓰면 Link 컴포넌트에 styled-components를 적용시킬 수 있다.
+
+3. 포켓몬 정보가 들어있는 객체들의 배열인 MOCK_DATA를 PokemonList로 뿌려주고
+map 메서드를 이용해서 화면에 리스트를 구현하려고 했지만 화면에 나타나지 않았다.
+  
+  solution: map 메서드 내부에 여러줄의 로직을 작성할 때에는 중괄호와 return 문을 작성해야한다.
+
+--------------------------------------------------
+
+// 04-02-2025
+1. 포켓몬을 추가하는 함수 addPokemon 내부에 조건문 selectedPokemon가 6마리 미만 일 때만
+포켓몬을 추가하고 6마리가 넘어가면 "최대 6마리까지만 선택할 수 있습니다." 라는 alert 출력
+하지만 오류가 발생했고 prev값을 콘솔로 찍어보니 add버튼을 누를때 마다 객체가 추가되지 않았다.
+  
+  solution: selectedPokemon의 length 가 6미만일 때 라고 조건을 달아줘야하는데
+  그냥 selectedPokemon < 6 이라는 조건을 달았다. 초기값이 객체를 모아둔 배열로
+  이루어져 있다는 것을 기억하자.
+
+2. 중복된 포켓몬을 도감에 추가하는 것을 방지하는 기능을 구현하려 했다.
+우리가 사용할수 있는 방법중에 includes와 some 메서드가 생각이 났고 두 메서드다 중복방지를 잘 수행했다.
+하지만 객체를 비교할 때는 some을 쓰는게 더 안전하다. 그 이유는 some은 객체 내부 값을 비교할 수 있고
+배열 안에 같은 id가 있는지 체크가 가능하다 그리고 모든 경우에서 올바르게 작동한다 includes는
+참조값을 비교하기 때문에 똑같이 생긴 객체여도 참조하는 주소가 다르다면 false를 반환하기 때문이다.
+  
+  solution: findIndex 메서드를 사용해서 id비교하는 것도 좋은 방법중에 하나이다.
+
+------------------------------------------------------
+
+// 05-02-2025
+1. 포켓몬 리스트 내부에 각각의 포켓몬 카드를 클릭 했을 때 포켓몬을 DashBoard에 추가하는 
+Add 버튼과 각각의 포켓몬들의 img, id, name 그리고 Add 버튼을 포함하는 li 태그도
+onClick 이벤트가 있어서 Add 버튼을 눌렀을 때 event bubbling이 일어나서 li 태그의
+onClick 이벤트도 함께 실행되어 포켓몬이 추가가 되는 것이 아니라 detail화면으로 이동되었다.
+  
+  solution: 자식 컴포넌트 onClick 이벤트에 e.stopPropagation 메서드를 사용해서 버블링을
+  막을 수 있다.
+
+2. 포켓몬 넘버를 구현하기 위해서 no.00{pokemon.id} 라는 하드코딩을 했지만
+넘버 값이 2자리를 넘어가는 시점부터는 no.0010 처럼 4자리로 숫자가 구현되는 문제가 생겼다.
+  
+  solution: padStart(),padEnd()메서드를 사용하면 숫자 앞 또는 뒤에 0을 추가하여
+  특정 자릿수의 문자열을 만들 수 있다.
+
+3. 쿼리 스트링으로 디테일 페이지를 구현하는데 포켓몬의 이름이 undefined로 떴었다.
+navigate(`/details?id=${pokemon.id}&name=${pokemon.Korean_name}&img=${pokemon.img_url}`);
+위의 코드처럼 /details 뒤에 ?id=${} 형태로 데이터가 전달되어야 한다.
+  
+  solution: pokemon.Korean_name에서 Korean이 아니라 korean으로 작성해야했다.
+
+-------------------------------------------------------
+
+// 06-02-2025
+1. 기존에는 PokemonList의 PokemonCard 컴포넌트와 DashBoard의 PokemonCard 컴포넌트를
+따로 만들었는데 생각해보니 똑같은 정보를 담은 컴포넌트가 너무 많은 곳에서 재사용 된다고 생각했다.
+그래서 코드를 리팩토링 하기로 마음먹었고 PokemonCard 내부에 navigate와 쿼리스트링을 넣어줘
+DashBoard와 PokemonList에서 중복되는 useNavigate를 삭제할 수 있었다.
+추가로 PokemonCard 컴포넌트 내부에 조건문을 사용해서 Delete와 Add 버튼을 구현화 하는 것 보다
+PokemonCard 컴포넌트의 역할을 단쉬화시키고, 부모 컴포넌트 에서 ADD 또는 Delete 로직을 제어하도록
+만드는 것이 컴포넌트의 재사용적인 측면에서 더 효율적인 방법이라고 생각을 했다.
+문제점은 ADD 버튼과 Delete버튼 text도 잘 출력이 되고 ADD버튼의 기능도 구현이 잘 되지만
+Delete버튼의 삭제로직이 작동하지 않았다. 그리고 이상하다고 생각이 든게 PokemonList에서는
+clickButton={addPokemon}의 형태로 함수명 자체로 내려주면 되는데 왜 DashBoard에서는
+clickButton={(pokemon) => deleteButton(pokemon.id)}로 해야하는 지에 대해 의문이 들었다.
+  
+  solution: clickButton={addPokemon} 이 방식은 addPokemon 함수를 그대로 전달하는 것이다.
+  즉, clickButton이 호출될 때 addPokemon(pokemon)이 실행된다는 뜻이고
+  clickButton={(pokemon) => addPokemon(pokemon)}와 같은 의미이다.
+  addPokemon(pokemon)은 파라미터로 pokemon이 들어가기 때문에 추가하려면
+  포켓몬의 모든 정보(img, name, types, id 등)가 필요하다. 하지만 deletePokemon(id)는 객체의 id만 필요하다.
+  왜 id만 전달해야 하는걸까? deletePokemon은 선택한 포켓몬을 DashBoard에서 제거하는 함수이다.
+  제거할 때는 해당 포켓몬의 id만 알면 삭제하는 데 큰 무리가 없으니까 만약 deletePokemon(pokemon)으로 파라미터를
+  pokemon 객체 전체를 넘기면 clickButton={deletePokemon} 으로 사용이 가능하다.
+  
+  하지만! id만 넘기는 방식이 더 좋은 3가지 이유가 있다.
+  1. 가독성과 의도 명확성 측면에서 deletePokemon(id)는 삭제할 포켓몬을 특정하는 데
+  id만 사용하는 의도를 더 명확하게 표현할 수 있다. 반면 deletePokemon(pokemon)은 전체 객체를 전달하지만,
+  실제로 필요한 건 id뿐이다.
+  2. 불필요한 데이터를 전달하는 것을 방지할 수 있다. deletePokemon(pokemon) 방식에서는 불필요한 데이터를 함수에 넘기게 된다.
+  리스트를 필터링하는 과정에서 오직 id값만 필요하므로, 굳이 전체 객체를 넘길 필요가 없다.
+  3. 함수의 일관성을 유지하는 것도 중요하다. 대부분의 삭제 로직에서는 ID를 기반으로 해서 항목을 찾고 삭제하는 것이 일반적이다.
+  
+  결론: 기술적으로 id 없이 pokemon 객체를 넘겨도 동작은 한다. 하지만 가독성과 일관성 유지, 불필요한 데이터 전달 방지를 위해서
+  id만 넘기는 방식이 효율적이고 협업할때도 유지보수하기 쉬운 방식이다.
+
+
+// 10-02-2025
+1. details 페이지에 포켓몬 Add 버튼을 추가하려고 했다. 기존에는 PokemonList로 부터 쿼리스트링으로 받아온 정보로
+이미지, 이름, 타입, 설명을 보여줬었기 때문에 PokemonList에서 id를 추가로 전달해서 details 페이지에 const id에 담았고
+MOCK_DATA.js로 부터 포켓몬 정보와 useContext를 이용해 addPokemon 함수도 가져왔다.
+추가로 handleAddPokemon이라는 새로운 이벤트 핸들러를 만들고 Add 버튼을 실행할 때 실행 되게 만들었다. 
+MOCK_DATA를 find 메서드를 이용해 매개변수 p를 넣어 p.id === id(쿼리스트링으로 가져온 id값) details 페이지에 보여지는
+포켓몬 객체를 pokemon 상수에 담고 그걸 addPokemon() 함수에 넣어 실행시켰다.
+문제는 add버튼을 누르면 에러가 발생했고 console로 pokemon값을 찍으니 undefined가 찍히는게 아닌가..?
+  
+  solution: 쿼리스트링으로 가져온 id를 Number 타입으로 형변환 시켜줘야한다!!
+  쿼리스트링으로 id값을 가져올 때 나는 const id라는 상수에 params.get("id"); 값을 담았지만
+  쿼리"스트링"으로 가져온 값은 스트링 타입 이므로 p.id(number 타입)과 id(string 타입)을 일치 연산자로 비교하면
+  데이터 타입이 일치하지 않아 pokemon 상수에 아무것도 담기지 않아 JS에서 undefined를 임의로 할당한 것이다.
+
+2. configStore에서 pokemonSlice를 import 해오고 싶었으나 되지 않았다.
+  
+  solution: createSlice로 만든 pokemonSlice는 이름, 초기상태, reducers 로 이루어진 객체이다.
+  그렇기 떄문에 pokemonSlice 자체가 아니라 그 안에 있는 reducer를 export 해줘야한다.
+  즉, export default pokemonSlice.reducer;가 되야한다.
+
+3. Detail 페이지에서 Add버튼을 누를 떈 포켓몬이 추가가 되지만 pokemonList에서 Add버튼을 누르면
+포켓몬이 dashBoard에 추가되지 않았다.
+
+  solution: dispatch()내부에는 함수를 실행 시킨 값을 넣는 것 자체가 하나의 공식이다.
+  즉, clickButton={() => dispatch(addPokemon)}이 아니라
+  clickButton={(data) => dispatch(addPokemon(data))}이 되어야 한다.
+  그리고 parameter인 data는 PokemonList의 자식컴포넌트인 PokemonCard로부터 데이터를 전달받는다.
+  도저히 이해가 안가서 리액트 공식문서를 찾아봤는데 역방향 데이터 흐름이라는 개념이라고 한다.
+  리액트에서는 일반적으로 단반향 데이터 흐름을 따르는데, 일반적으로 부모에서 자식으로 props를 통해 데이터를 전달하는 방식이다.
+  하지만 자식에서 부모로 데이터를 전달할 때는 딱히 방법이 없어서, 부모가 콜백함수를 자식에게 props로 전달하고, 자식이 그 함수를
+  호출 하는 방식으로 데이터를 불러올 수 있는 것이다.
